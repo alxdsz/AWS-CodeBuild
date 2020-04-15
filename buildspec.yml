@@ -38,7 +38,12 @@ phases:
 
       - docker push 378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test:latest
 
+      - cd helm
+
+        - helm install awstest --set image.repository=378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test --set image.tag=latest .
+
       - echo Build completed on `date`
+
 
 
 #  aws ecr get-login-password --region eu-central-1 | docker login --username AWS  --password-stdin 378582414855.dkr.ecr.eu-central-1.amazonaws.com
