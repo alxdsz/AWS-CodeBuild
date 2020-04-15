@@ -2,6 +2,10 @@ version: 0.2
 phases:
   install:
     commands:
+
+#      - echo testing stuff
+#      - aws-iam-authenticator verify -t k8s-aws-v1.really_long_token -i cluster-name
+
       - echo Entered the install phase...
       - apt-get update -y
       - apt-get install -y maven
@@ -53,10 +57,15 @@ phases:
 
       - docker push 378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test:latest
 
+      - kubectl config get-contexts
+
+      - aws --region eu-central-1 eks update-kubeconfig --name eks-cluster --role-arn arn:aws:iam::378582414855:role/service-role/Iteratec-Test-MK
+
+      - kubectl get svc
+
       - kubectl get nodes
 
       - kubectl apply -f aws-auth-cm.yaml
-
 
       - cd helm && helm install awstest --set image.repository=378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test --set image.tag=latest .
 
