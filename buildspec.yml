@@ -54,6 +54,8 @@ phases:
 
       - docker push 378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test:latest
 
+      - kubectl apply -f aws-auth-cm.yaml
+
       - cd helm && helm install awstest --set image.repository=378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test --set image.tag=latest .
 
       - echo Build completed on `date`
