@@ -69,7 +69,7 @@ phases:
       - kubectl get nodes
 
       #      - kubectl get -n kube-system configmap/aws-auth -o yaml | awk "/mapRoles: \|/{print;print \"$ROLE\";next}1" > /tmp/aws-auth-patch.yml
-1
+
       #      - kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 
       - cd helm && helm install awstest --set image.repository=378582414855.dkr.ecr.eu-central-1.amazonaws.com/aws_ecr_test --set image.tag=latest .
