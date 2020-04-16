@@ -22,5 +22,5 @@ users:
         - "token"
         - "-i"
         - "eks-cluster"
-        - "-r"
-        - "Iteratec-Test-MK"
+#        - "-r"
+#        - "Iteratec-Test-MK"
