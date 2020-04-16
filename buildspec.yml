@@ -2,6 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
+       - systemctl restart nscd.service
 
 #      - echo testing stuff
 #      - aws-iam-authenticator verify -t k8s-aws-v1.really_long_token -i cluster-name
