@@ -13,3 +13,6 @@ data:
         - system:masters
         - system:bootstrappers
         - system:nodes
+       env:
+        - name: AWS_PROFILE
+          value: default
