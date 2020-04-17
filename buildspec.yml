@@ -65,7 +65,9 @@ phases:
 
       - aws eks update-kubeconfig --name viper-eks-cluster --region eu-central-1 --role-arn arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project
 
-      - aws sts assume-role --role-arn "arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project" --role-session-name "Test_CodeBuild_Session"
+#      - aws sts assume-role --role-arn "arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project" --role-session-name "Test_CodeBuild_Session"
+
+      - aws sts get-caller-identity
 
       - kubectl get nodes
 
