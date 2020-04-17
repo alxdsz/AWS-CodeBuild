@@ -8,7 +8,7 @@ phases:
 
       - echo Entered the install phase...
       - apt-get update -y
-      - apt-get install -y maven
+#      - apt-get install -y maven
 
       - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/linux/amd64/aws-iam-authenticator
       - chmod +x ./aws-iam-authenticator
@@ -41,8 +41,8 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - mvn install
-      - mvn package
+#      - mvn install
+#      - mvn package
     finally:
       - echo This always runs even if the install command fails
   post_build:
@@ -51,11 +51,11 @@ phases:
 
       - aws ecr get-login-password --region eu-central-1 | docker login --username AWS  --password-stdin 378582414855.dkr.ecr.eu-central-1.amazonaws.com
 
-      - docker build -t aws-test .
+#      - docker build -t aws-test .
 
-      - docker tag aws-test:latest 378582414855.dkr.ecr.eu-central-1.amazonaws.com/new-ecr:latest
+#      - docker tag aws-test:latest 378582414855.dkr.ecr.eu-central-1.amazonaws.com/new-ecr:latest
 
-      - docker push 378582414855.dkr.ecr.eu-central-1.amazonaws.com/new-ecr:latest
+#      - docker push 378582414855.dkr.ecr.eu-central-1.amazonaws.com/new-ecr:latest
 
       - kubectl config get-contexts
 
