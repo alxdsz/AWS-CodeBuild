@@ -6,9 +6,9 @@ metadata:
 data:
   mapRoles: |
     - rolearn: arn:aws:iam::378582414855:role/Iteratec-Test-MK
-#      username: build
+      username: build
 #      username: system:node:{{EC2PrivateDNSName}}
-      username: testuser
+#      username: testuser
       groups:
         - system:masters
         - system:bootstrappers
