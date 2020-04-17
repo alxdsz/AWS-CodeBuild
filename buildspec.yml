@@ -27,9 +27,9 @@ phases:
     commands:
       - echo Entered the pre_build phase...
 
-      - echo Logging in to Amazon ECR...
-      - aws --version
-      - $(aws ecr get-login --region eu-central-1 --no-include-email)
+#      - echo Logging in to Amazon ECR...
+#      - aws --version
+#      - $(aws ecr get-login --region eu-central-1 --no-include-email)
 
 #      - mkdir ~/.kube/
 #      - cp config.yml ~/.kube/config
