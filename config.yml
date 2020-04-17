@@ -23,4 +23,4 @@ users:
         - "-i"
         - "viper-eks-cluster"
         - "-r"
-        - "New-Iteratec-Codebuild-Project"
+        - "viper-eks-role"
