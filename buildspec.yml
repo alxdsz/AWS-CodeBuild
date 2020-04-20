@@ -49,7 +49,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
 
-      - cat ~/.aws/config
+      - ls -a ~
 
 #      - unset AWS_ACCESS_KEY_ID
 #      - unset AWS_SECRET_ACCESS_KEY
