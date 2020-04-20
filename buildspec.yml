@@ -66,6 +66,12 @@ phases:
       - aws eks update-kubeconfig --name viper-eks-cluster --region eu-central-1 --role-arn arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project
 
 #      - aws sts assume-role --role-arn "arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project" --role-session-name "Test_CodeBuild_Session"
+      - CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::378582414855:role/viper-eks-role --role-session-name codebuild-kubectl --duration-seconds 900)
+      - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
+      - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
+      - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
+      - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+      - aws eks update-kubeconfig --name viper-eks-cluster
 
       - aws sts get-caller-identity
       - aws eks describe-cluster --region eu-central-1 --name viper-eks-cluster --query cluster.certificateAuthority.data
@@ -77,19 +83,13 @@ phases:
       - kubectl get svc
 
       - aws --region eu-central-1 eks update-kubeconfig --name viper-eks-cluster --role-arn arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project
-#      - aws --region eu-central-1 eks update-kubeconfig --name viper-eks-cluster --role-arn arn:aws:iam::378582414855:role/service-role/New-Iteratec-Codebuild-Project
-#      - aws --region eu-central-1 eks update-kubeconfig --name eks-cluster --role-arn arn:aws:iam::378582414855:role/service-role/Iteratec-Test-MK
+      #      - aws --region eu-central-1 eks update-kubeconfig --name viper-eks-cluster --role-arn arn:aws:iam::378582414855:role/service-role/New-Iteratec-Codebuild-Project
+      #      - aws --region eu-central-1 eks update-kubeconfig --name eks-cluster --role-arn arn:aws:iam::378582414855:role/service-role/Iteratec-Test-MK
 
-#      - kubectl apply -f aws-auth-cm.yml
+      #      - kubectl apply -f aws-auth-cm.yml
 
-#      - kubectl get svc
+      #      - kubectl get svc
 
-      - CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::378582414855:role/viper-eks-role --role-session-name codebuild-kubectl --duration-seconds 900)
-      - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
-      - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
-      - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
-      - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
-      - aws eks update-kubeconfig --name viper-eks-cluster
 
       -  kubectl config get-contexts
       - kubectl get nodes
