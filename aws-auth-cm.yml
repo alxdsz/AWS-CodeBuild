@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::378582414855:role/New-Iteratec-Codebuild-Project
+    - rolearn: arn:aws:iam::378582414855:role/viper-eks-role
 #      username: build
       username: system:node:{{EC2PrivateDNSName}}
 #      username: testuser
