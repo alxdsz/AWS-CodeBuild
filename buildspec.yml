@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - aws sts get-caller-identity
-      - kubectl aws-auth-cm.yaml
+      - kubectl apply -f aws-auth-cm.yaml
       - kubectl get nodes
 
   pre_build:
