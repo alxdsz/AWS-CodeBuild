@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - aws sts get-caller-identity
-      - aws eks update-kubeconfig --name adyszy-eks-cluster --region eu-central-1 --role-arn arn:aws:iam::378582414855:role/ADyszyEksCodeBuildKubectlRole
+      - kubectl apply -f aws-auth-cm.yaml
       - kubectl get nodes
 
   pre_build:
