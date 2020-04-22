@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - aws sts get-caller-identity
+      - kubectl help
   pre_build:
     commands:
   build:
